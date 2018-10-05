@@ -4,6 +4,8 @@ explain the format of the libraries -> basically a fasta file where the header h
 
 libraries and organisms should have unique names, even if the were place in different directories
 
+refers the original idea
+
 explain the manual verification steps.
 
    obsolet names/taxons
