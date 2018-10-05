@@ -1,0 +1,9 @@
+Executable = /bin/bash
+request_memory = 2G
+Nice_user = True
+Output = logs/$(Cluster).$(Process).processContamination.stdout
+Error =  logs/$(Cluster).$(Process).processContamination.stdout
+Log =  logs/$(Cluster).$(Process).processContamination.stdlog
+request_cpus = 3
+concurrency_limits = crosscontam:60
+queue from data/processContamination.condor.list 
