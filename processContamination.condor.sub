@@ -5,5 +5,5 @@ Output = logs/$(Cluster).$(Process).processContamination.stdout
 Error =  logs/$(Cluster).$(Process).processContamination.stdout
 Log =  logs/$(Cluster).$(Process).processContamination.stdlog
 request_cpus = 1
-concurrency_limits = crosscontam:180
+concurrency_limits = crosscontam:20
 queue from data/processContamination.condor.list 
