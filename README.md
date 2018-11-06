@@ -5,6 +5,7 @@
 * my file processing libs
 * condor like clusters (can be adapted to SGE and OAR)
    * linux nodes
+* DNA libraries
 
 **TODO**
 
