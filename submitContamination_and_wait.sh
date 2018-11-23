@@ -6,7 +6,7 @@ where:
     -i  set the input folder -- should be a complete path double quoted
     -t  folder with libraries to be compared with all the other in the input folder -- should be a complete path double quoted"
 
-while getopts ':hti:' option; do
+while getopts ':h:t:i:' option; do
   case "$option" in
     h) echo "$usage"
        exit
