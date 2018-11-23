@@ -1,14 +1,17 @@
 #!/bin/bash
 
-usage="$(basename "$0") [-h] -i \"folder\" -- program to compare pair of libraries (condor version)
+usage="$(basename "$0") [-h] -t \"target\" -i \"folder\" -- program to compare pair of libraries (condor version)
 where:
     -h  show this help text
-    -i  set the input folder -- should be a complete path double quoted"
+    -i  set the input folder -- should be a complete path double quoted
+    -t  folder with libraries to be compared with all the other in the input folder -- should be a complete path double quoted"
 
-while getopts ':hi:' option; do
+while getopts ':hti:' option; do
   case "$option" in
     h) echo "$usage"
        exit
+       ;;
+    t) targetLibs=$OPTARG
        ;;
     i) inputFolders=$OPTARG
        ;;
@@ -30,6 +33,12 @@ then
    exit 1
 fi
 
+if [ "$targetLibs" == "" ]
+then
+   targetLibs="$inputFolders"
+fi
+
 #mkdir logs
 ls -C1 $inputFolders > data/processContamination.condor.list
-condor_submit -batch-name "decont_[${inputFolders}]" processContamination.condor.sub -append "Arguments = processContamination.sh \$(Item) data/processContamination.condor.list"
+ls -C1 $targetLibs > data/target.list
+condor_submit -batch-name "decont_[${inputFolders}]" processContamination.condor.sub -append "Arguments = processContamination.sh \$(Item) data/target.list"
