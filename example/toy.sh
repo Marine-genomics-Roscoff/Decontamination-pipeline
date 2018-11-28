@@ -1,5 +1,6 @@
 #!/bin/bash
-gunzip toy/*.gz
+gunzip example/query/*.gz
+gunzip example/ref/*.gz
 exit
 
 bash buildSpeciesTable.sh -i "example/query/*.fa" > data/toy.speciesTable.tsv
