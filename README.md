@@ -2,14 +2,14 @@
 
 **requirements**
 * LAST (http://last.cbrc.jp/)
-* my file processing libs
-* condor like clusters (can be adapted to SGE and OAR)
-   * linux nodes
-* DNA libraries
+* my file processing libs in C++
+* condor like clusters (can be adapted to SGE, OAR or PBS)
+   * only in linux nodes
+* Only decontaminate DNA libraries
 
 **TODO**
 
-refers the original idea
+refers the original idea (cite needed)
 
 explain the toy example
 
