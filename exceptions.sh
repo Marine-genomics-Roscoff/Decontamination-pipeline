@@ -6,7 +6,7 @@ where:
     -i  prefix used in the translate step
     -s  set the table of species
 "
-while getopts ':h:i:s:' option; do
+while getopts h:i:s: option; do
   case "$option" in
     h) echo "$usage"
        exit
@@ -25,7 +25,6 @@ while getopts ':h:i:s:' option; do
        ;;
   esac
 done
-shift $((OPTIND - 1))
 
 if [ "$speciesTable" == "" ]
 then

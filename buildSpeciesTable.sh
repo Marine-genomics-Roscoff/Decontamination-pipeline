@@ -5,7 +5,7 @@ where:
     -h  show this help text
     -i  set the input folder -- should be a complete path double quoted"
 
-while getopts ':hi:' option; do
+while getopts h:i: option; do
   case "$option" in
     h) echo "$usage"
        exit
@@ -21,7 +21,6 @@ while getopts ':hi:' option; do
        exit 1
        ;;
   esac
-  shift $((OPTIND - 1))
 done
 
 if [ "$inputFolders" == "" ]

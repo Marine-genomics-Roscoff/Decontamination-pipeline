@@ -1,19 +1,19 @@
 #!/bin/bash
 
-usage="$(basename "$0") [-h] -q \"query\" -r \"ref\" -- program to compare pair of libraries (condor version)
+usage="$(basename "$0") [-h] -t \"target\" -i \"folder\" -- program to compare pair of libraries (condor version)
 where:
     -h  show this help text
-    -r  set the where the references are -- should be a complete path double quoted
-    -q  folder with libraries to be compared with all the others in the ref folder -- should be a complete path double quoted"
+    -i  set the input folder -- should be a complete path double quoted
+    -t  folder with libraries to be compared with all the other in the input folder -- should be a complete path double quoted"
 
-while getopts h:r:q: option; do
+while getopts h:t:i: option; do
   case "$option" in
     h) echo "$usage"
        exit
        ;;
-    q) targetLibs=$OPTARG
+    t) targetLibs=$OPTARG
        ;;
-    r) inputFolders=$OPTARG
+    i) inputFolders=$OPTARG
        ;;
     :) printf "missing argument for -%s\n" "$OPTARG" >&2
        echo "$usage" >&2
@@ -28,7 +28,7 @@ done
 
 if [ "$inputFolders" == "" ]
 then
-   echo "missing ref folder" >&2
+   echo "missing input folder" >&2
    exit 1
 fi
 

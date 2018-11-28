@@ -30,6 +30,7 @@ while getopts h:i:s:o: option; do
   esac
 done
 
+
 if [ "$inputFiles" == "" ]
 then
    echo "missing result files" >&2
