@@ -8,7 +8,7 @@ where:
     -s  set the table of species
 "
 
-while getopts ':h:i:s:o:' option; do
+while getopts h:i:s:o: option; do
   case "$option" in
     h) echo "$usage"
        exit
@@ -29,8 +29,6 @@ while getopts ':h:i:s:o:' option; do
        ;;
   esac
 done
-shift $((OPTIND - 1))
-
 
 if [ "$inputFiles" == "" ]
 then
