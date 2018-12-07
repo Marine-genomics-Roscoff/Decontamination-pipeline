@@ -40,4 +40,10 @@ fi
 #mkdir logs
 ls -C1 $inputFolders > data/processContamination.condor.list
 ls -C1 $targetLibs > data/target.list
-condor_submit -batch-name "decont_[${inputFolders}]" processContamination.condor.sub -append "Arguments = processContamination.sh \$(Item) data/target.list"
+
+if [ "$targetLibs" == "$inputFolders" ]
+then
+   condor_submit -batch-name "decont_[${inputFolders}]" processContamination.condor.sub -append "Arguments = processSelfContamination.sh \$(Item) data/target.list"
+else
+   condor_submit -batch-name "decont_[${inputFolders}]" processContamination.condor.sub -append "Arguments = processContamination.sh \$(Item) data/target.list"
+fi
