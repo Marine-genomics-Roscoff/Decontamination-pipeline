@@ -12,25 +12,18 @@ let qtdLibraries-=1
 
 echo "processing library $inputLibrary againt libraries listed in $inputList"
 
-if [ "$inputLibrary" != "" ]
+if [ ! "$inputLibrary" == "" ]
 then
    libraryName=`echo "$inputLibrary" | rev | cut -f 1 -d "/" | cut -d "." -f 2- | rev`
    
    #Jump to the next library to avoid compare all againt all
-   start=0
-   for i in `seq 0 $qtdLibraries`
-   do
-      start=$i
-      if [ "$inputLibrary" == "${libraries[$i]}" ]
-      then
-         break
-      fi
-   done
-   let start+=1
+   let start=0
 
+#   echo ${libraries[$i]}  $start  $qtdLibraries
+   
    if [ $start -le $qtdLibraries ]
    then
-      #build last DB
+      echo build last DB
       lastdb -cR01 ${libraryName}.DB $inputLibrary
       echo -n "" > $libraryName.blasttab
 
