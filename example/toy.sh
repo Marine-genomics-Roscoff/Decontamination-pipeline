@@ -16,7 +16,11 @@ exit
 echo "wait until the end of all jobs"
 exit
 
+echo "Ways to do not consider pairs as contaminations:"
 echo "Fill the file data/knownExceptions.tsv with the exceptions with already know"
+echo "Fill the file data/from_species_to_genus.tsv with the correct hierachy to be ignored"
+echo "Fill the file data/obsolete.genus.tsv with the genus that are obsolete and the new corresponding codes"
+exit
 
 bash translateAndListCandidates.sh -i "results/*.candidates.tsv" -s data/toy.speciesTable.tsv -o toy
 bash exceptions.sh -i toy -s data/toy.speciesTable.tsv
