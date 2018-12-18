@@ -58,7 +58,13 @@ do
    fileName=`echo "$translation" | cut -f1`
    specieName=`echo "$translation" | cut -f2`
    taxon=`echo "$translation" | cut -f3`
-   echo "$fileName -> $specieName"
+   echo "fileName: [${fileName}] -> speciesName: [${specieName}] taxon: [${taxon}]"
+   if [ "${taxon}" == "" ]
+   then
+      echo "Wrong species table format."
+      exit 1
+   fi
+   
    sed -i "s/"$'\t'"$fileName"$'\t'"/"$'\t'"$fileName"$'\t'"$specieName"$'\t'"$taxon"$'\t'"/" $outputPrefix.crossContaminantion.organism.pairs.tsv
 done < <(grep -v "^#" $speciesTable)
 
