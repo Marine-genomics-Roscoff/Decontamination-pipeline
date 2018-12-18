@@ -41,5 +41,11 @@ do
    specieName=`echo "$library" | cut -d ":" -f 2 | awk '{print toupper($0)}' | awk -F 'ORGANISM=' '{print $2}' | cut -d "\"" -f 2`
    taxon=`echo "$library" | cut -d ":" -f 2 |  awk '{print toupper($0)}' | awk -F 'TAXON_ID=' '{print $2}' | cut -d " " -f 1`
    echo "$fileName"$'\t'"$specieName"$'\t'"$taxon" | sed "s/\//-/g"
+   echo "fileName: [${fileName}] -> speciesName: [${specieName}] taxon: [${taxon}]"
+   if [ "${taxon}" == "" ] || [ "${specieName}" == "" ]
+   then
+      echo "Wrong species table format (TAXON_ID or/and ORGANISM)."
+      exit 1
+   fi
 done < <(grep -m1 "^>" $inputFolders)
 
