@@ -44,7 +44,7 @@ do
    echo "fileName: [${fileName}] -> speciesName: [${specieName}] taxon: [${taxon}]"
    if [ "${taxon}" == "" ] || [ "${specieName}" == "" ]
    then
-      echo "Wrong species table format (TAXON_ID or/and ORGANISM)."
+      echo "Wrong species table format (missing TAXON_ID or/and ORGANISM tags on the fasta file)."
       exit 1
    fi
 done < <(grep -m1 "^>" $inputFolders)
