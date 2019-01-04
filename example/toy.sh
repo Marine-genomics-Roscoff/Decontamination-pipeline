@@ -3,9 +3,12 @@ gunzip example/query/*.gz
 gunzip example/ref/*.gz
 exit
 
-echo "before everything, each sequence should have a TAXON_ID, so if it is not true, just run this and replace data/from_species_to_genus.tsv by the one level up file produced"
+echo "before everything, each sequence should have a TAXON_ID, so if it is not true, just run this:"
 bash taxon.sh -l lineage.tsv -d $'\t' -f example/query/*.fa -o myOwnLineageQuery
 bash taxon.sh -l lineage.tsv -d $'\t' -f example/ref/*.fa -o myOwnLineageRef
+cp data/from_species_to_genus.tsv data/from_species_to_genus.backup
+cat myOwnLineageRef.oneLevelUp.tsv myOwnLineageQuery.oneLevelUp.tsv > data/from_species_to_genus.tsv
+exit
 
 echo "the pipeline need a table of species. We strongly recomend that the user verifies it carrefully."
 bash buildSpeciesTable.sh -i "example/query/*.fa" > data/toy.speciesTable.tsv
