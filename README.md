@@ -1,4 +1,4 @@
-# Decontamination-pipeline
+Cross-contamination pipeline
 
 **requirements**
 * LAST (http://last.cbrc.jp/)
@@ -10,9 +10,9 @@
 
 **HOWTO**
 
-run 
+look at
 ```
-bash example/toy.sh
+example/toy.sh
 ```
 
 **TODO**
@@ -23,7 +23,7 @@ explain the toy example
 
 explain the format of the libraries -> basically a fasta file where the header has the ORGANISM and TAXON tags.
 
-libraries and organisms should have unique names, even if the were located in different directories
+libraries and organisms should have unique names, even if the were located at different directories
 
 **explain the manual verification steps**
 * obsolet names/taxons
