@@ -5,7 +5,7 @@ input=$2
 output=$3
 fasta=$4
 
-usage="$(basename "$0") [-h] -d \"delimiter\" -l \"lineage\" -o \"output\" -f \"fasta\" -- program build a hiearchy of species based on the lineage
+usage="$(basename "$0") [-h] -d \"delimiter\" -l \"lineage\" -o \"output\" -f \"fasta\" -- program build a hierarchy of species based on the lineage
 where:
     -h  show this help text
     -d  set the column delimiter of the lineage and fasta file
