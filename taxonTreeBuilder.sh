@@ -10,7 +10,7 @@ where:
     -h  show this help text
     -d  set the column delimiter of the lineage and fasta file
     -l  set the lineage file
-    -o  set the fasta file
+    -o  set the new fasta file with the lineage
     -f  set the fasta file"
 
 while getopts h:f:l:o:d: option; do
