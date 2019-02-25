@@ -3,7 +3,7 @@ gunzip example/query/*.gz
 gunzip example/ref/*.gz
 exit
 
-echo "before everything, each sequence should have a TAXON_ID, so if it is not true (lineage.tsv needed), just run this:"
+echo "before everything, each sequence header should have a TAXON_ID= tag, so if it is not true (lineage.tsv needed), just run this:"
 bash taxonTreeBuilder.sh -l lineage.tsv -d $'\t' -f example/query/*.fa -o myOwnLineageQuery
 bash taxonTreeBuilder.sh -l lineage.tsv -d $'\t' -f example/ref/*.fa -o myOwnLineageRef
 cp data/from_species_to_genus.tsv data/from_species_to_genus.backup
