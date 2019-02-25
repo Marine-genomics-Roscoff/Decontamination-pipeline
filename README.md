@@ -1,7 +1,7 @@
 Cross-contamination pipeline
 
 **requirements**
-* LAST (http://last.cbrc.jp/)
+* LAST (http://last.cbrc.jp/) - LAST binary path should be added to $PATH linux variable
 * my file processing libs in C++
 * condor like clusters (can be adapted to SGE, OAR or PBS schedulers)
    * only in linux nodes
@@ -17,11 +17,6 @@ please, look at
 ```
 example/toy.sh
 ```
-
-**explain the manual verification steps**
-* obsolet names/taxons
-* species to genus file
-* exceptions
 
 **Original idea**
 * https://doi.org/10.1093/molbev/msw209
