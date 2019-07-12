@@ -1,4 +1,5 @@
 #!/bin/bash
+export PATH=$PATH:./
 
 usage="$(basename "$0") [-h] -i prefix -s speciesTable -- program to process the exceptions
 where:
