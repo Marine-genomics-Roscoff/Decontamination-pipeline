@@ -57,8 +57,8 @@ done < <(grep $'\t'"[0-9]\|\-1" data/obsolete.genus.tsv)
 echo "if you did not succeded to fix all data/${prefix}.absent.genus.tsv, you can fill data/from_species_to_genus.tsv with the missing, but for another taxonomic level (like family) and rerun this script."
 #grep $'\t'"[0-9]\|\-1" missing.taxons.tsv >> from_species_to_genus.tsv
 
-/kingdoms/mpb/workspace3/rocha/algorithms/joinCut.bin data/from_species_to_genus.tsv "1" "2"  ${prefix}.crossContaminantion.organism.pairs.0.tmp "1" "1 2 3 4 5 6" ${prefix}.crossContaminantion.organism.pairs.1.tmp
-/kingdoms/mpb/workspace3/rocha/algorithms/joinCut.bin data/from_species_to_genus.tsv "1" "2"  ${prefix}.crossContaminantion.organism.pairs.1.tmp "2" "1 2 3 4 5 6 7" ${prefix}.crossContaminantion.organism.pairs.2.tmp
+joinCut.bin data/from_species_to_genus.tsv "1" "2"  ${prefix}.crossContaminantion.organism.pairs.0.tmp "1" "1 2 3 4 5 6" ${prefix}.crossContaminantion.organism.pairs.1.tmp
+joinCut.bin data/from_species_to_genus.tsv "1" "2"  ${prefix}.crossContaminantion.organism.pairs.1.tmp "2" "1 2 3 4 5 6 7" ${prefix}.crossContaminantion.organism.pairs.2.tmp
 
 awk -F '\t' '{if ($7 == $8) print "GENUS\t"$0}' ${prefix}.crossContaminantion.organism.pairs.2.tmp >> ${prefix}.crossContaminantion.organism.pairs.exceptions.tsv
 awk -F '\t' '{if ($7 != $8) print $0}' ${prefix}.crossContaminantion.organism.pairs.2.tmp > ${prefix}.crossContaminantion.organism.pairs.3.tmp
@@ -80,8 +80,8 @@ echo "verify your-self manually the exceptions (${prefix}.crossContaminantion.or
 grep -v "^#" ${prefix}.crossContaminantion.organism.pairs.exceptions.tsv | cut -f 6,7 | sort | uniq > data/pattern.exceptions.tsv
 
 grep -Fv -f data/pattern.exceptions.tsv ${prefix}.crossContaminantion.sequence.pairs.tsv > results/final.${prefix}.crossContaminantion.sequence.pairs.tsv
-/kingdoms/mpb/workspace3/rocha/algorithms/joinCut.bin ${speciesTable} "1" "2" results/final.${prefix}.crossContaminantion.sequence.pairs.tsv "1" "1 2 3 4" results/final.${prefix}.crossContaminantion.sequence.pairs.0.tmp
-/kingdoms/mpb/workspace3/rocha/algorithms/joinCut.bin ${speciesTable} "1" "2" results/final.${prefix}.crossContaminantion.sequence.pairs.0.tmp "2" "1 2 3 4 5" results/final.${prefix}.crossContaminantion.sequence.pairs.1.tmp
+joinCut.bin ${speciesTable} "1" "2" results/final.${prefix}.crossContaminantion.sequence.pairs.tsv "1" "1 2 3 4" results/final.${prefix}.crossContaminantion.sequence.pairs.0.tmp
+joinCut.bin ${speciesTable} "1" "2" results/final.${prefix}.crossContaminantion.sequence.pairs.0.tmp "2" "1 2 3 4 5" results/final.${prefix}.crossContaminantion.sequence.pairs.1.tmp
 cut -f 1,2,5,6 results/final.${prefix}.crossContaminantion.sequence.pairs.1.tmp | sort | uniq -c | sed "s/^[ ]\+//" | sort -gr | sed "s/ /"$'\t'"/" > results/final.${prefix}.crossContaminantion.organism.pairs.tsv
 awk -F '\t' '{print $1"\t"$5"\t"$3"\n"$2"\t"$6"\t"$4}' results/final.${prefix}.crossContaminantion.sequence.pairs.1.tmp | sort | uniq | cut -f 1,2 | sort | uniq -c | sed "s/^[ ]\+//" | sort -gr | sed "s/ /"$'\t'"/" > results/final.${prefix}.crossContaminantion.organism.tsv
 
