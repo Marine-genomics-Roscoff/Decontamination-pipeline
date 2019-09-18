@@ -1,6 +1,6 @@
 #!/bin/bash
 
-usage="$(basename "$0") [-h] -p \"patternFile\" -t  \"targetFile\" -- [grep -Ff pattern.txt target.txt] with awk
+usage="$(basename "$0") [-h] -p \"patternFile\" -t  \"targetFile\" -- it's like [grep -Ff pattern.txt target.txt], but with awk
 where:
     -h  show this help text
     -p  file with the patterns to be found
@@ -60,3 +60,5 @@ BEGIN {
    }
 }
 '
+#command line alternative for one pattern only (equivalent to grep -F "pattern" file)
+#awk '{if(index($0, pattern) > 0) {print $0}}' file
